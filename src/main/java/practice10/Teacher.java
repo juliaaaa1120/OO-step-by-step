@@ -9,6 +9,9 @@ public class Teacher extends Person {
     public Teacher(int id, String name, int age, LinkedList<Klass> classes) {
         super(id, name, age);
         this.classes = (LinkedList<Klass>) classes.clone();
+        for (Klass klass : classes) {
+            klass.setTeacher(this);
+        }
     }
 
     public Teacher(int id, String name, int age) {

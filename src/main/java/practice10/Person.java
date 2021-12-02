@@ -1,9 +1,9 @@
 package practice10;
 
 public class Person {
-    private int id;
-    private String name;
-    private int age;
+    private final int id;
+    private final String name;
+    private final int age;
 
     public Person(int id, String name, int age) {
         this.id = id;
@@ -26,6 +26,18 @@ public class Person {
 
     public String introduce() {
         return String.format("My name is %s. I am %d years old.", name, age);
+    }
+
+    @Override
+    public boolean equals(Object person) {
+        boolean isEquals;
+        if (person.getClass() == this.getClass()) {
+            Person comparePerson = (Person) person;
+            isEquals =  (comparePerson.id == this.id && comparePerson.name.equals(this.name) && comparePerson.age == this.age);
+        } else {
+            isEquals = false;
+        }
+        return isEquals;
     }
 }
 
