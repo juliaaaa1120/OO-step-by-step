@@ -30,14 +30,12 @@ public class Person {
 
     @Override
     public boolean equals(Object person) {
-        boolean isEquals;
         if (person.getClass() == this.getClass()) {
             Person comparePerson = (Person) person;
-            isEquals =  (comparePerson.id == this.id && comparePerson.name.equals(this.name) && comparePerson.age == this.age);
+            return (comparePerson.id == this.id && comparePerson.name.equals(this.name) && comparePerson.age == this.age);
         } else {
-            isEquals = false;
+            return false;
         }
-        return isEquals;
     }
 }
 

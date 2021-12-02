@@ -32,11 +32,7 @@ public class Klass {
         student.setKlass(this);
     }
 
-    public Boolean isIn(Student student) {
-        if (this.number == student.getKlass().getNumber()) {
-            return true;
-        } else {
-            return false;
-        }
+    private Boolean isIn(Student student) {
+        return this.number.equals(student.getKlass().getNumber());
     }
 }

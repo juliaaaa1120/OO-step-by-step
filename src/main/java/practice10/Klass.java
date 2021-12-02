@@ -32,7 +32,7 @@ public class Klass {
         if (this.isIn(student)) {
             this.leader = student;
             if (this.teacher != null) {
-                System.out.print(String.format("I am %s. I know %s become Leader of %s.\n", this.teacher.getName(), student.getName(), student.getKlass().getDisplayName()));
+                System.out.printf("I am %s. I know %s become Leader of %s.\n", this.teacher.getName(), student.getName(), student.getKlass().getDisplayName());
             }
         } else {
             System.out.print("It is not one of us.\n");
@@ -42,15 +42,11 @@ public class Klass {
     public void appendMember(Student student) {
         student.setKlass(this);
         if (this.teacher != null) {
-            System.out.print(String.format("I am %s. I know %s has joined %s.\n", this.teacher.getName(), student.getName(), student.getKlass().getDisplayName()));
+            System.out.printf("I am %s. I know %s has joined %s.\n", this.teacher.getName(), student.getName(), student.getKlass().getDisplayName());
         }
     }
 
     public Boolean isIn(Student student) {
-        if (this.number == student.getKlass().getNumber()) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.number.equals(student.getKlass().getNumber());
     }
 }

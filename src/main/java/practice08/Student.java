@@ -18,14 +18,10 @@ public class Student extends Person {
 
     @Override
     public String introduce() {
-        String output = "";
-        if (this.getKlass().getLeader() != null) {
-            if (super.getId() == this.getKlass().getLeader().getId()) {
-                output =  super.introduce() + " " + String.format("I am a Student. I am Leader of %s.", klass.getDisplayName());
-            }
+        if (this.getKlass().getLeader() != null && super.getId() == this.getKlass().getLeader().getId()) {
+                return String.format("%s I am a Student. I am Leader of %s.", super.introduce(), klass.getDisplayName());
         } else {
-            output = super.introduce() + " " + String.format("I am a Student. I am at %s.", klass.getDisplayName());
+            return String.format("%s I am a Student. I am at %s.", super.introduce(), klass.getDisplayName());
         }
-        return output;
     }
 }

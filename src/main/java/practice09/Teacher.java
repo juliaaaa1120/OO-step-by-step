@@ -8,7 +8,7 @@ public class Teacher extends Person {
 
     public Teacher(int id, String name, int age, LinkedList<Klass> classes) {
         super(id, name, age);
-        this.classes = (LinkedList<Klass>) classes.clone();
+        this.classes = classes;
     }
 
     public Teacher(int id, String name, int age) {
@@ -22,25 +22,22 @@ public class Teacher extends Person {
     @Override
     public String introduce() {
         if (this.classes.size() == 0) {
-            return super.introduce() + " " + "I am a Teacher. I teach No Class.";
+            return String.format("%s I am a Teacher. I teach No Class.", super.introduce());
         } else {
-            return super.introduce() + " " + String.format("I am a Teacher. I teach Class %s.", classes.stream().map(klass -> klass.getNumber().toString()).collect(Collectors.joining(", ")));
+            String classesToString = classes.stream().map(klass -> klass.getNumber().toString()).collect(Collectors.joining(", "));
+            return String.format("%s I am a Teacher. I teach Class %s.", super.introduce(), classesToString);
         }
     }
 
     public String introduceWith(Student student) {
         if (this.isTeaching(student)) {
-            return super.introduce() + " " + String.format("I am a Teacher. I teach %s.", student.getName());
+            return String.format("%s I am a Teacher. I teach %s.", super.introduce(), student.getName());
         } else {
-            return super.introduce() + " " + String.format("I am a Teacher. I don't teach %s.", student.getName());
+            return String.format("%s I am a Teacher. I don't teach %s.", super.introduce(), student.getName());
         }
     }
 
     public Boolean isTeaching(Student student) {
-        if (classes.stream().map(Klass::getNumber).collect(Collectors.toList()).contains(student.getKlass().getNumber())) {
-            return true;
-        } else {
-            return false;
-        }
+        return classes.stream().map(Klass::getNumber).collect(Collectors.toList()).contains(student.getKlass().getNumber());
     }
 }

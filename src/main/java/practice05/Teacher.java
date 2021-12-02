@@ -19,9 +19,9 @@ public class Teacher extends Person {
     @Override
     public String introduce() {
         if (klass == null) {
-            return super.introduce() + " " + "I am a Teacher. I teach No Class.";
+            return String.format("%s I am a Teacher. I teach No Class.", super.introduce());
         } else {
-            return super.introduce() + " " + String.format("I am a Teacher. I teach Class %d.", klass);
+            return String.format("%s I am a Teacher. I teach Class %d.", super.introduce(), klass);
         }
     }
 }
